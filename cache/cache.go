@@ -66,6 +66,7 @@ func (c *Cache) Get(key string) (interface{}, bool) {
 		c.lock.Lock()
 		c.removeElement(element)
 		c.lock.Unlock()
+		c.lock.RLock()
 		return nil, false
 	}
 
